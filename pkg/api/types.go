@@ -84,7 +84,7 @@ func (osm *OpenSCAPMetadata) SetError(err error) {
 }
 
 var (
-	ScanOptions       = []string{"openscap", "clamav"}
+	ScanOptions       = []string{"openscap", "clamav", "insights"}
 	PullPolicyOptions = []string{PullAlways, PullNever, PullIfNotPresent}
 )
 

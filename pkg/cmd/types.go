@@ -60,6 +60,8 @@ type ImageInspectorOptions struct {
 	CVEUrlPath string
 	// ClamSocket is the location of clamav socket file
 	ClamSocket string
+        //The port on which the Insights scanner listens
+	InsightsPort int16
 	// PostResultURL represents an URL where the image-inspector should post the results of
 	// the scan.
 	PostResultURL string
@@ -133,6 +135,9 @@ func (i *ImageInspectorOptions) Validate() error {
 	}
 	if i.ScanType == "clamav" && len(i.ClamSocket) == 0 {
 		return fmt.Errorf("clam-socket must be set to use clamav scan type")
+	}
+	if i.ScanType == "insights" && i.InsightsPort == 0 {
+		return fmt.Errorf("Insights scanner port must be set to use insights scan type")
 	}
 
 	// A valid scan-type must be specified.

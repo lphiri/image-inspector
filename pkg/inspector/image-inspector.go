@@ -25,6 +25,7 @@ import (
 
 	iiapi "github.com/openshift/image-inspector/pkg/api"
 	"github.com/openshift/image-inspector/pkg/clamav"
+	"github.com/openshift/image-inspector/pkg/insights"
 	apiserver "github.com/openshift/image-inspector/pkg/imageserver"
 )
 
@@ -188,7 +189,17 @@ func (i *defaultImageInspector) Inspect() error {
 			return err
 		}
 		scanResults.Results = append(scanResults.Results, results...)
-
+	case "insights":
+		scanner, err = insights.NewScanner(i.opts.InsightsPort)
+		if err != nil {
+			return fmt.Errorf("failed to initialize insights scanner: %v", err)
+		}
+		results, _, err := scanner.Scan(i.opts.DstPath, &i.meta.Image)
+		if err != nil {
+			log.Printf("DEBUG: Unable to scan image %q with Insights: %v", i.opts.Image, err)
+			return err
+		}
+		scanResults.Results = append(scanResults.Results, results...)
 	default:
 		return fmt.Errorf("unsupported scan type: %s", i.opts.ScanType)
 	}
