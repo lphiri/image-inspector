@@ -61,7 +61,7 @@ type ImageInspectorOptions struct {
 	// ClamSocket is the location of clamav socket file
 	ClamSocket string
         //The port on which the Insights scanner listens
-	InsightsPort int16
+	InsightsPort int
 	// PostResultURL represents an URL where the image-inspector should post the results of
 	// the scan.
 	PostResultURL string

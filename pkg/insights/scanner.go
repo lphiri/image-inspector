@@ -21,12 +21,12 @@ type ScanRequest struct {
 }
 
 type InsightsScanner struct {
-	ServerPort int16
+	ServerPort int
 }
 
 var _ api.Scanner = &InsightsScanner{}
 
-func NewScanner(port int16) (api.Scanner, error) {
+func NewScanner(port int) (api.Scanner, error) {
 
 	return &InsightsScanner{
 		ServerPort: port,

@@ -14,7 +14,6 @@ import (
 
 func main() {
 	inspectorOptions := iicmd.NewDefaultImageInspectorOptions()
-
 	flag.StringVar(&inspectorOptions.URI, "docker", inspectorOptions.URI, "Daemon socket to connect to")
 	flag.StringVar(&inspectorOptions.Image, "image", inspectorOptions.Image, "Docker image to inspect")
 	flag.StringVar(&inspectorOptions.DstPath, "path", inspectorOptions.DstPath, "Destination path for the image files")
@@ -28,6 +27,7 @@ func main() {
 	flag.BoolVar(&inspectorOptions.OpenScapHTML, "openscap-html-report", inspectorOptions.OpenScapHTML, "Generate an OpenScap HTML report in addition to the ARF formatted report")
 	flag.StringVar(&inspectorOptions.CVEUrlPath, "cve-url", inspectorOptions.CVEUrlPath, "An alternative URL source for CVE files")
 	flag.StringVar(&inspectorOptions.ClamSocket, "clam-socket", inspectorOptions.ClamSocket, "Location of clamav socket file (default: '')")
+	flag.IntVar(&inspectorOptions.InsightsPort, "insights-port", inspectorOptions.InsightsPort, "Insights scanner server port (default: 0)")
 	flag.StringVar(&inspectorOptions.PostResultURL, "post-results-url", inspectorOptions.PostResultURL, "After scan finish, HTTP POST the results to this URL")
 	flag.StringVar(&inspectorOptions.PostResultTokenFile, "post-results-token-file", inspectorOptions.PostResultTokenFile, "If specified, content of it will be added to the POST result URL (?token=....)")
 	flag.StringVar(&inspectorOptions.AuthTokenFile, "webdav-token-file", inspectorOptions.AuthTokenFile, "If specified, token used to authenticate to Image Inspector will be read from this file")
