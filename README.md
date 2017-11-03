@@ -3,7 +3,7 @@
 Image Inspector can extract docker images to a target directory and
 (optionally) serve the content through webdav.
 
-    $ image-inspector --image=fedora:22 --serve 0.0.0.0:8080
+    $ image-inspector --image=fedora:22 --serve 0.0.0.0:8080 --scan-type=openscap
     2015/12/10 19:24:44 Image fedora:22 is available, skipping image pull
     2015/12/10 19:24:44 Extracting image fedora:22 to
                         /var/tmp/image-inspector-121627917
@@ -66,4 +66,4 @@ To build the image-inspector you can run this command:
     $ docker run -ti --rm --privileged -p 8080:8080 \
       -v /var/run/docker.sock:/var/run/docker.sock \
       openshift/image-inspector --image=registry.access.redhat.com/rhel7:latest \
-      --path=/tmp/image-content --serve 0.0.0.0:8080
+      --path=/tmp/image-content --scan-type=openscap --serve 0.0.0.0:8080
