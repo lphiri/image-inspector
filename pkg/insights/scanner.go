@@ -12,7 +12,7 @@ import (
 	"github.com/openshift/image-inspector/pkg/api"
 )
 
-const ScannerName = "insights"
+const ScannerName = "redhatinsights"
 
 
 type ScanRequest struct {
@@ -51,6 +51,10 @@ func (s *InsightsScanner) Scan(path string, image *docker.Image) ([]api.Result, 
 func (s *InsightsScanner) Name() string {
 	return ScannerName
 }
+
+
+
+
 
 func (s *InsightsScanner) ScanImage(path string, id string) ([]api.Result,error){
 
